@@ -16,7 +16,18 @@ def orderFile(infile):
             topit += 1
         else:
             topit -= 1
+    return -1
 
+def memoization(infile):
+    seen = {}
+    with open(infile, "r") as f:
+        for line in f:
+            n = int(line)
+            if (2020-n) in seen:
+                return n * (2020-n)
+            seen[n] = True
+    return -1
 
 if __name__ == '__main__':
     print(orderFile("inputs/day01.txt"))
+    print(memoization("inputs/day01.txt"))
